@@ -43,18 +43,12 @@
 
   *{ box-sizing:border-box; margin:0; padding:0; }
 
-  /* Paint the root so browser chrome, notch, home-indicator and overscroll
-     ("rubber band") zones all show the design instead of a plain cut-off band. */
+  /* Solid on-brand base so any overscroll / notch / home-indicator band
+     matches the design instead of showing a plain cut-off strip. */
   html{
     -webkit-text-size-adjust:100%;
-    min-height:100%;
-    background:
-      radial-gradient(60% 45% at 12% 0%,   rgba(110,140,247,.30), transparent 60%),
-      radial-gradient(60% 45% at 88% 6%,    rgba(246,166,219,.30), transparent 60%),
-      radial-gradient(70% 55% at 20% 100%,  rgba(255,198,154,.32), transparent 62%),
-      radial-gradient(62% 50% at 92% 96%,   rgba(147,224,184,.32), transparent 60%),
-      var(--cream);
-    background-attachment:fixed;
+    height:100%;
+    background:var(--cream);
   }
 
   body{
@@ -71,6 +65,19 @@
   }
 
   /* ============ AMBIENT BACKGROUND ============ */
+  /* Oversized FIXED backdrop: always covers the whole visible screen at every
+     scroll position and whether or not the mobile toolbars are collapsed.
+     This is what makes the background continuous top-to-bottom on phones. */
+  .backdrop{
+    position:fixed; inset:-12vh -12vw; z-index:-4; pointer-events:none;
+    background:
+      radial-gradient(50% 38% at 12% 8%,  rgba(110,140,247,.34), transparent 60%),
+      radial-gradient(52% 40% at 88% 14%, rgba(246,166,219,.34), transparent 60%),
+      radial-gradient(62% 50% at 18% 94%, rgba(255,198,154,.36), transparent 62%),
+      radial-gradient(56% 44% at 92% 90%, rgba(147,224,184,.36), transparent 60%),
+      var(--cream);
+  }
+
   .aura{ position:fixed; inset:-20vmax; z-index:-3; filter:blur(60px); pointer-events:none; }
   .aura span{
     position:absolute; border-radius:50%; opacity:.75;
@@ -369,6 +376,7 @@
 <body>
 
   <!-- ambient layers -->
+  <div class="backdrop" aria-hidden="true"></div>
   <div class="aura" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span></div>
   <div class="produce" aria-hidden="true">
     <b>🥑</b><b>🫐</b><b>🥦</b><b>🍓</b><b>🥚</b><b>🍋</b><b>🥕</b>
@@ -412,7 +420,7 @@
       <p class="featured-desc">
         My personal food framework — daily meal rotation, budget breakdown, fast options for busy days, and what to do when you're eating out.
       </p>
-      <a class="cta" href="https://zlang25.gumroad.com/l/drjvgf?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAdGRleASyLblleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafZjK9YDyy-lFkrQHyVdSOWNGz_lzZYKAudA4n4J5jGB3YXDKdzgxQynLM_HA_aem_457rUA6TYW10TbkBf_SWvw&amp;utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noopener">
+      <a class="cta" href="https://zlang25.gumroad.com/l/drjvgf" target="_blank" rel="noopener">
         Get the e-book
         <span class="price">£22.59</span>
       </a>
