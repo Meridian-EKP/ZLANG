@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#FBF8F3" />
 <title>Zach Langsam — Eat Like Zach</title>
 <meta name="description" content="Nutrition, whole foods and the complete Eat Like Zach guide. Get the e-book and follow along." />
 
@@ -42,12 +43,24 @@
 
   *{ box-sizing:border-box; margin:0; padding:0; }
 
-  html{ -webkit-text-size-adjust:100%; }
+  /* Paint the root so browser chrome, notch, home-indicator and overscroll
+     ("rubber band") zones all show the design instead of a plain cut-off band. */
+  html{
+    -webkit-text-size-adjust:100%;
+    min-height:100%;
+    background:
+      radial-gradient(60% 45% at 12% 0%,   rgba(110,140,247,.30), transparent 60%),
+      radial-gradient(60% 45% at 88% 6%,    rgba(246,166,219,.30), transparent 60%),
+      radial-gradient(70% 55% at 20% 100%,  rgba(255,198,154,.32), transparent 62%),
+      radial-gradient(62% 50% at 92% 96%,   rgba(147,224,184,.32), transparent 60%),
+      var(--cream);
+    background-attachment:fixed;
+  }
 
   body{
     font-family:"Plus Jakarta Sans", system-ui, sans-serif;
     color:var(--plum);
-    background:var(--cream);
+    background:transparent;
     min-height:100dvh;
     line-height:1.5;
     overflow-x:hidden;
@@ -127,7 +140,8 @@
 
   /* ============ LAYOUT ============ */
   .wrap{
-    width:100%; max-width:460px; padding:28px 20px 40px;
+    width:100%; max-width:460px;
+    padding:calc(28px + env(safe-area-inset-top)) 20px calc(40px + env(safe-area-inset-bottom));
     display:flex; flex-direction:column; gap:18px;
   }
 
