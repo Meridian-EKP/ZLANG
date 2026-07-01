@@ -48,7 +48,8 @@
   html{
     -webkit-text-size-adjust:100%;
     height:100%;
-    background:var(--cream);
+    background:#ECE8F2;            /* soft on-brand tint (not plain white/cream) */
+    overscroll-behavior:none;      /* stop iOS rubber-band revealing an edge band */
   }
 
   body{
@@ -58,6 +59,7 @@
     min-height:100dvh;
     line-height:1.5;
     overflow-x:hidden;
+    overscroll-behavior:none;      /* stop iOS rubber-band on the body too */
     position:relative;
     display:flex;
     justify-content:center;
@@ -399,7 +401,7 @@
       </div>
 
       <h1 class="name">Zach Langsam</h1>
-      <p class="handle">@eatlikezach</p>
+      <p class="handle">@zlang25</p>
 
       <div class="trust">
         <span class="chip"><span class="stars">★★★★★</span>5.0 · 4 reviews</span>
